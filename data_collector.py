@@ -38,7 +38,7 @@ except Exception as e:
     market_cap, shares_outstanding, beta, total_debt, cash, latest_price = [None] * 6
 
 
-# 5. Extract DCF Input Metrics from the Statements
+# Extract DCF Input Metrics from the Statements
 # Define the required DCF metrics and their corresponding statement rows (keys)
 dcf_metrics_map = {
     'Revenue': 'Total Revenue',
@@ -94,13 +94,14 @@ summary_data = {
 # Convert summary data to a DataFrame row
 summary_df = pd.DataFrame(summary_data, index=['Latest Market Data'])
 
-# 7. Combine financial and market data
+# Combine financial and market data
 final_df = pd.concat([dcf_df, summary_df])
 
-# 8. Save to CSV
+# Save to CSV
 FILE_NAME = 'repsol_financials.csv'
 final_df.to_csv(FILE_NAME)
 
 print(f"✅ Data collection complete. Results saved to {FILE_NAME}")
 print("\nFirst few rows of the data:")
+
 print(final_df.head())
